@@ -33,7 +33,11 @@ app.get('/doctor-availability', (req, res) => {
     });
 
     if (availableSlot) {
-        return res.json({ isAvailable: true });
+        const finalResponse = {
+            isAvailable: true,
+        };
+        console.log(finalResponse)
+        return res.json(finalResponse);
     } else {
         const nextAvailableSlot = availability.find(slot => moment(slot.start, 'HH:mm').isSameOrAfter(requestedTime));
 
@@ -43,7 +47,12 @@ app.get('/doctor-availability', (req, res) => {
             const nextDay = requestedDate.add(1, 'day').format('YYYY-MM-DD');
             const nextDayAvailability = availabilityData.availabilityTimings[moment(nextDay).format('dddd').toLowerCase()];
             const nextAvailableSlot = nextDayAvailability[0];
-            return res.json({ isAvailable: false, nextAvailableSlot: { date: nextDay, time: nextAvailableSlot.start } });
+            const finalResponse = {
+                isAvailable: false,
+                nextAvailableSlot: { date: nextDay, time: nextAvailableSlot.start }
+            };
+            console.log(finalResponse)
+            return res.json(finalResponse);
         }
     }
 });
