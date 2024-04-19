@@ -10,6 +10,10 @@ app.use(bodyParser.json());
 
 const availabilityData = JSON.parse(fs.readFileSync('Availability.json'));
 
+app.get('/', (req, res) => {
+    res.send('Hello World');
+})
+
 app.get('/doctor-availability', (req, res) => {
     const { date, time } = req.body;
 
