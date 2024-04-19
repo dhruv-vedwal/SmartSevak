@@ -1,12 +1,8 @@
 {
+  "builds": [
+    { "src": "index.js", "use": "@vercel/node" }
+  ],
   "routes": [
-    {
-      "src": "/doctor-availability",
-      "dest": "/index.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.js"
-    }
+    { "src": "/(.*)", "dest": "index.js" }
   ]
 }
